@@ -1,10 +1,12 @@
 <template>
   <div>
     <h2>Võta ühendust</h2>
-    <form @submit.prevent="handleSubmit" novalidate>
+    <form name="contact" method="POST" data-netlify="true" @submit.prevent="handleSubmit" novalidate>
+      <input type="hidden" name="form-name" value="contact">
       <div class="form-group">
         <input
           v-model="form.name"
+          name="name"
           type="text"
           placeholder="Sinu nimi"
           aria-label="Sinu nimi"
@@ -15,6 +17,7 @@
       <div class="form-group">
         <input
           v-model="form.email"
+          name="email"
           type="email"
           placeholder="email@naide.ee"
           aria-label="E-posti aadress"
@@ -25,6 +28,7 @@
       <div class="form-group">
         <textarea
           v-model="form.message"
+          name="message"
           placeholder="Sinu kirja sisu"
           aria-label="Kirja sisu"
           :class="{ error: errors.message }"
@@ -83,19 +87,30 @@ function validate() {
   return valid
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   if (!validate()) return
 
-  // In production, replace with actual API call
-  // e.g. fetch('/api/contact', { method: 'POST', body: JSON.stringify(form) })
-  submitted.value = true
-
-  setTimeout(() => {
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        'form-name': 'contact',
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      }).toString(),
+    })
+    submitted.value = true
     form.name = ''
     form.email = ''
     form.message = ''
-    submitted.value = false
-  }, 4000)
+    setTimeout(() => {
+      submitted.value = false
+    }, 4000)
+  } catch {
+    alert('Viga saatmisel. Palun proovige uuesti.')
+  }
 }
 </script>
 
