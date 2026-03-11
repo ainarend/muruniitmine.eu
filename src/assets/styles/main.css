@@ -8,7 +8,9 @@
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
-  background-color: #7dd8f0;
+  background:
+    url('/grass-bg.png') bottom center / auto 200px repeat-x,
+    linear-gradient(to bottom, #7dd8f0 0%, #a6d4e4 50%, #8aba40 70%, #5a9525 85%, #4a7a18 100%);
 }
 
 a {

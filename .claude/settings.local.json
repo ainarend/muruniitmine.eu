@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(git:*)",
+      "Bash(ls -la /Users/ainarend/www/muruniitmine.eu/public/grass*)"
     ]
   }
 }
