@@ -25,7 +25,7 @@ const routes = [
     component: () => import('../views/HinnakiriView.vue'),
     meta: {
       title: 'Hinnakiri – MuruNiitmine.eu',
-      description: 'MuruNiitmine.eu hinnakiri – muruniitmine käsiniidukiga 15€/h, murutraktoriga 18€/h, trimmerdamine 15€/h. Soodsad hinnad Tartus.',
+      description: 'MuruNiitmine.eu hinnakiri – muruniitmine käsiniidukiga 15€/h, murutraktoriga 25€/h, trimmerdamine 20€/h. Soodsad hinnad Tartus.',
     },
   },
   {
